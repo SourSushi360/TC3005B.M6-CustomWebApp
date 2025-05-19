@@ -1,0 +1,10 @@
+# Nix-related files
+.direnv
+.envrc
+
+# Project Files
+/SECRETS
+
+node_modules/
+.env
+.env.*
