@@ -1,42 +1,305 @@
+/* src/App.css */
+/* CSS variables */
+:root {
+  /* Layout */
+  --max-width: 1200px;
+  --padding: 16px;
+  --gap: 20px;
+  --border-radius: 8px;
+  --border-radius-sm: 4px;
+  --border-radius-lg: 12px;
+
+  /* Colors */
+  --color1: #283D3B;
+  --color2: #21585A;
+  --color3: #197278;
+  --color4: #83A8A6;
+  --color5: #EDDDD4;
+  --color6: #E3B7AD;
+  --color7: #D99185;
+  --color8: #C44536;
+  --color9: #9E3A2E;
+  --color10: #772E25;
+  --white: #ffffff;
+  --black: #000000;
+  --light-gray: #efefef;
+  --gray: #e2e8f0;
+  --gray-dark: #cbd5e0;
+  --text-light: #ecf0f1;
+  --text-dark: #2d3748;
+  --text-gray: #4a5568;
+  --text-gray-light: #718096;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.1);
+
+  /* Typography */
+  --font-family: Arial, sans-serif;
+  --line-height: 1.5;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.1rem;
+  --font-size-xl: 1.2rem;
+  --font-size-xxl: 1.8rem;
+
+  /* Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-xxl: 2.5rem;
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+
+  /* Z-index */
+  --z-index-low: 10;
+  --z-index-medium: 100;
+  --z-index-high: 1000;
+  --z-index-highest: 1001;
+
+  /* Light Mode (default) */
+  --bg-color: var(--light-gray);
+  --text-color: var(--text-dark);
+  --header-bg: var(--color1);
+  --card-bg: var(--color3);
+  --card-active: var(--color8);
+  --main-header: var(--color9);
+  --main-header-text: var(--white);
+}
+
+/* Base Styles */
+body {
+  font-family: var(--font-family);
+  margin: 0;
+  padding: 0;
+  min-width: 315px;
+  line-height: var(--line-height);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+/* Root Layout Structure */
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  display: flex;
+  min-height: 100vh;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 20vw;
+  background: var(--header-bg);
+  box-shadow: var(--shadow-md);
+  z-index: var(--z-index-medium);
+  display: flex;
+  flex-direction: column;}
+
+.navbar .container {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.navbar-brand {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-sm) var(--padding);
+  justify-content: center;
+  align-items: center;
+  font-size: 5rem;
+  font-weight: 900;
+  height: 200px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.nav-links {
+  flex-direction: column;
+  gap: var(--space-xs);
+  padding: var(--space-sm) 0;
+  font-size: var(--font-size-xl);
+}
+  /* LINKS */
+.navbar a {
+  color: var(--white);
+  text-decoration: none;
+  transition: var(--transition-fast);
 }
 
-.card {
-  padding: 2em;
+.nav-links a {
+  display: block;
+  width: 100%;
+  padding: var(--space-md) var(--space-lg);
+  font-weight: 500;
+  box-sizing: border-box;
 }
 
-.read-the-docs {
-  color: #888;
+.nav-links a:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.navbar a.active {
+  background: rgba(0, 0, 0, 0.1);
+  font-weight: 800;
+}
+
+/* gameCard */
+.game-card {
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition-normal);
+  display: flex;
+  flex-direction: column;
+  color: var(--white);
+  width: 300px;
+  height: 350px;
+  margin: 10px;
+}
+
+.game-card:hover {
+  transform: translateY(-4px);
+  background-color: var(--card-active);
+}
+
+.game-image-link {
+  display: block;
+  width: 100%;
+}
+
+.game-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.game-info {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex-grow: 1;
+}
+
+.game-category {
+  font-size: 0.85rem;
+  color: var(--color5);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.game-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.game-title a {
+  color: var(--white, #fff);
+  text-decoration: none;
+}
+
+.game-title a:hover {
+  text-decoration: underline;
+}
+
+.game-footer {
+  margin-top: auto;
+  font-size: 0.9rem;
+  color: var(--color5);
+}
+
+.game-grid {
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-lg);
+  padding: 1rem;
+  box-sizing: border-box;
+  justify-items: center;
+}
+
+/* HOME */
+.home-page {
+  margin-left: 20vw;
+  width: 80vw;
+  box-sizing: border-box;
+}
+
+.home-header {
+  width: 100%;
+  background-color: var(--main-header);
+  font-size: var(--font-size-xl);
+  padding: var(--space-xl);
+}
+
+.home-header h1 {
+  margin: 0;
+  color: var(--main-header-text);
+}
+
+/* PAGINATION */
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.pagination-list {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.pagination-item,
+.pagination-prev,
+.pagination-next,
+.pagination-ellipsis {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pagination-link {
+  padding: 0.5rem 0.75rem;
+  text-decoration: none;
+  background: var(--gray);
+  color: var(--text-dark);
+  border-radius: var(--border-radius-sm);
+  transition: background-color var(--transition-fast);
+}
+
+.pagination-link:hover {
+  background-color: var(--gray-dark);
+}
+
+.pagination-link.active {
+  background-color: var(--main-header);
+  color: white;
+  font-weight: bold;
+}
+
+.pagination-link.disabled {
+  pointer-events: none;
+  opacity: 0.5;
 }
