@@ -4,6 +4,7 @@ import { fetchGames } from '../services/gameService';
 import { useSearchParams } from "react-router-dom";
 import { Pagination } from "../components/Pagination";
 import type { Game } from '../types/games';
+import { Search } from "../components/Search.tsx";
 
 export const Home = () => {
     // State for game data
@@ -51,6 +52,7 @@ export const Home = () => {
         <div className="home-page">
             <div className="home-header">
                 <h1>Featured Games</h1>
+		<Search />
             </div>
 
             <div className="game-grid">
